@@ -3,6 +3,7 @@ import 'package:flutter_expense_tracker/main.dart';
 import 'package:flutter_expense_tracker/widgets/expenseslist/expenses_list.dart';
 import 'package:flutter_expense_tracker/widgets/new_expense.dart';
 import '../model/expense.dart';
+import '../chart/chart.dart';
 class Expenses extends StatefulWidget {
   const Expenses({super.key});
 
@@ -77,7 +78,8 @@ void _openAddExpenseOverlay(){
           const SizedBox(
             height: 8,
           ),
-          Text("The Chart",style: Theme.of(context).textTheme.titleLarge,),
+        
+          Chart(expenses: _registeredExpenses),
           Expanded(child: Expenses_list(expenses: _registeredExpenses,remove_expense: removeExpense,),
           )
 

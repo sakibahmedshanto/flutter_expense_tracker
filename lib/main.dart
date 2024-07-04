@@ -9,13 +9,13 @@ void main(){
     ),
     theme: ThemeData().copyWith(
           colorScheme: kColorScheme,
-          appBarTheme: AppBarTheme().copyWith(
+          appBarTheme: const AppBarTheme().copyWith(
             backgroundColor: kColorScheme.onPrimaryContainer,
             foregroundColor: kColorScheme.primaryContainer,
             ),
-            cardTheme: CardTheme().copyWith(
+            cardTheme:const CardTheme().copyWith(
               color: kColorScheme.secondaryContainer,
-              margin: EdgeInsets.symmetric(vertical: 8,horizontal: 16),
+              margin:const EdgeInsets.symmetric(vertical: 8,horizontal: 16),
             ),
             elevatedButtonTheme: ElevatedButtonThemeData(
               style: ElevatedButton.styleFrom(
