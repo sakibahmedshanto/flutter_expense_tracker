@@ -15,7 +15,7 @@ class _ExpensesState extends State<Expenses> {
 
 // start of the list
   final List<Expense> _registeredExpenses=[
-    Expense(title: "Sakib", amount: 1000, date: DateTime.now(), category: Category.food)
+    Expense(title: "Potato Chips", amount: 10, date: DateTime.now(), category: Category.food)
   ];
 
 // end of the list
@@ -52,7 +52,7 @@ void removeExpense(Expense expense){
 void _openAddExpenseOverlay(){
   showModalBottomSheet(context: context,
   isScrollControlled: true,
-  
+  useSafeArea: true,
    builder: (ctx)=> FractionallySizedBox(
      
      child: NewExpense(addToList: add_to_expense,
@@ -62,8 +62,10 @@ void _openAddExpenseOverlay(){
 }
 
 
+
   @override
   Widget build(BuildContext context) {
+  final width = (MediaQuery.of(context).size.width);
     return Scaffold(
       appBar: AppBar(
         title: Text("Flutter Expense Tracker"),
@@ -72,7 +74,7 @@ void _openAddExpenseOverlay(){
       ],
       
       ),
-      body: Column(
+      body: width<600 ? Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           const SizedBox(
@@ -84,7 +86,17 @@ void _openAddExpenseOverlay(){
           )
 
         ],
-      ),
+      ):Row(
+         children: [
+          const SizedBox(
+            width: 8,
+          ),
+          Expanded(child: Chart(expenses: _registeredExpenses)),
+          Expanded(child: Expenses_list(expenses: _registeredExpenses,remove_expense: removeExpense,),
+          )
+
+        ],
+      )
     );
   }
 }
